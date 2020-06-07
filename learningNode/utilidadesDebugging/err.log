@@ -1,0 +1,8 @@
+Error: Oooops
+    at Timeout._onTimeout (C:\Users\jefferlindao\Documents\codigo\CursosPlatzi\BackendNodeJs\learningNode\utilidadesDebugging\consoleClass.js:9:21)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+Error: Oooops
+    at Timeout._onTimeout (C:\Users\jefferlindao\Documents\codigo\CursosPlatzi\BackendNodeJs\learningNode\utilidadesDebugging\consoleClass.js:9:21)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
