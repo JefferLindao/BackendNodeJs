@@ -29,6 +29,57 @@ class MongoLib {
 
     return MongoLib.connection
   }
+  /**
+   * 
+   * @param {String} collection 
+   * @param {String} query 
+   */
+  getAll(collection, query) {
+    return this.connect().then(db => {
+      return db.collection(collection).find(query).toArray()
+    })
+  }
+  /**
+   * 
+   * @param {String} collection 
+   * @param {Int} id 
+   */
+  get(collection, id) {
+    return this.connect().then(db => {
+      return db.collection(collection).findOne({ _id: ObjectId(id) })
+    })
+  }
+  /**
+   * 
+   * @param {String} collection 
+   * @param {String} data 
+   */
+  create(collection, data) {
+    return this.connect().then(db => {
+      return db.collection(collection).insertOne(data)
+    }).then(result => result.insertedId)
+  }
+  /**
+   * 
+   * @param {String} collection 
+   * @param {Int} id 
+   * @param {String} data 
+   */
+  update(collection, id, data) {
+    return this.connect().then(db => {
+      return db.collection(collection).updateOne({ _id: ObjectId(id) }, { $set: data }, { upsert: true })
+    }).then(result => result.upsertedId || id)
+  }
+  /**
+   * 
+   * @param {String} collection 
+   * @param {Int} id 
+   */
+  delete(collection, id) {
+    return this.connect().then(db => {
+      return db.collection(collection).deleteOne({ _id: ObjectId(id) })
+    }).then(() => id)
+  }
 }
 
 module.exports = MongoLib
