@@ -18,7 +18,7 @@ function moviesApi(app) {
     const { tags } = req.query
     try {
       const movies = await moviesService.getMovies({ tags })
-      throw new Error('Error getting movies')
+
       res.status(200).json({
         data: movies,
         message: 'movies listed'
@@ -34,7 +34,7 @@ function moviesApi(app) {
    * @param int movieId
    * @return [data, message]
    */
-  router.get('/:movieId', validationHandler({ movieId: movieIdSchema }, params), async function (req, res, next) {
+  router.get('/:movieId', validationHandler({ movieId: movieIdSchema }, 'params'), async function (req, res, next) {
     const { movieId } = req.params
     try {
       const movies = await moviesService.getMovie({ movieId })
