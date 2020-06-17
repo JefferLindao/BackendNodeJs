@@ -32,3 +32,5 @@ dist/
 #modulos
 paquete/npm/node_modules/
 paquete/utiles/node_modules/
+moviesApi/.nyc_output
+moviesApi/coverage
